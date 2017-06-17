@@ -1,0 +1,17 @@
+{
+  "name": "house-data-scrape",
+  "version": "1.0.0",
+  "description": "Scrape house data",
+  "main": "houses-to-csv.js",
+  "dependencies": {
+    "json2csv": "^3.7.3",
+    "lodash.uniqby": "^4.7.0",
+    "to-title-case": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Oram <me@mitmaro.ca>",
+  "license": "ISC"
+}
