@@ -1,40 +1,13 @@
+## Instructions
+## Set LatitudeMax, LongitudeMax, LatitudeMin and LongitudeMin to the bounds of you search area
+## PriceMin and PriceMax are helpful
+## Doesn't handle pages, so you will need to change CurrentPage=1 to get all results
+## Copy the tsv file created into the RawData sheet in the Google Sheet, this needs to be done for each page
+
 jsonOutputPath="data/houses-$(date +%Y-%m-%d)-4.json"
 csvOutputPath="data/houses-$(date +%Y-%m-%d)-4.tsv"
 
 mkdir -p "data/"
-
-#curl \
-#'https://api53.realtor.ca/Listing.svc/PropertySearch?'\
-#'&ZoomLevel=11'\
-#'&LongitudeMax=-52.0585470'\
-#'&LatitudeMax=47.7496295'\
-#'&LatitudeMin=47.3729289'\
-#'&LongitudeMin=-53.3666066'\
-#'&TransactionTypeId=2'\
-#'&PropertyTypeId=300'\
-#'&PriceMin=275000'\
-#'&PriceMax=450000'\
-#'&BedRange=0-0'\
-#'&BathRange=0-0'\
-#'&StoreyRange=0-0'\
-#'&SearchFormType=RES'\
-#'&ApplicationId=53'\
-#'&CultureId=1'\
-#'&PropertyTypeGroupID=1'\
-#'&RecordsPerPage=15000'\
-#'&Token=D6TmfZprLI/pMffIdRWjMNkkFFh2ZN/nOiuymgASp2k='\
-#'&GUID=8b0ea6a9-7a54-4ae2-9673-354e1b1d367f'\
-#'&_=1495302770316'\
-# -H 'Origin: https://m.realtor.ca'\
-# -H 'Accept-Encoding: gzip, deflate, sdch, br'\
-# -H 'Accept-Language: en-US,en;q=0.8'\
-# -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/57.0.2987.98 Chrome/57.0.2987.98 Safari/537.36'\
-# -H 'Accept: application/json, text/javascript, */*; q=0.01'\
-# -H 'Connection: keep-alive'\
-# -H 'DNT: 1'\
-# --compressed
-
-# 
 
 curl \
 	'https://api2.realtor.ca/Listing.svc/PropertySearch_Post'\
@@ -63,8 +36,8 @@ curl \
 '&PropertyTypeGroupID=1'\
 '&PropertySearchTypeId=1'\
 '&TransactionTypeId=2'\
-'&PriceMin=200000'\
-'&PriceMax=375000'\
+'&PriceMin=150000'\
+'&PriceMax=450000'\
 '&BedRange=0-0'\
 '&BathRange=0-0'\
 '&BuildingTypeId=1'\
@@ -74,6 +47,6 @@ curl \
 '&ApplicationId=1'\
 '&CultureId=1'\
 '&Version=7.0'\
-'&CurrentPage=4'
+'&CurrentPage=1'
 
 node houses-to-csv.js "$jsonOutputPath" > "$csvOutputPath"
