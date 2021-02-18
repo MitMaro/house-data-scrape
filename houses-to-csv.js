@@ -65,7 +65,7 @@ const results = uniqueBy(
 	'MlsNumber'
 )
 .filter((result) => {
-	return (
+    return (result !== undefined &&
 		(result.Building.Type === 'House' || result.Building.Type === undefined)
 		&& (result.Property.OwnershipType === 'Freehold' || result.Property.OwnershipType === undefined)
 	)
@@ -73,18 +73,21 @@ const results = uniqueBy(
 .map((result) => {
 	const [bedroomsAboveGrade, bedroomsBelowGrade] = (result.Building.Bedrooms || '').split(' + ');
 	let parking1 = {Name: '', Spaces: ''};
-	let parking2 = {Name: '', Spaces: ''};;
-	let parking3 = {Name: '', Spaces: ''};;
+	let parking2 = {Name: '', Spaces: ''};
+	let parking3 = {Name: '', Spaces: ''};
 	if (result.Property.Parking) {
-		assert(result.Property.Parking.length < 4);
+		assert(result.Property.Parking.length < 5);
 		if (result.Property.Parking[0]) {
-			parking1 = result.Property.Parking[0]
+			parking1 = result.Property.Parking[0];
 		}
 		if (result.Property.Parking[1]) {
-			parking2 = result.Property.Parking[1]
+			parking2 = result.Property.Parking[1];
 		}
 		if (result.Property.Parking[2]) {
-			parking3 = result.Property.Parking[2]
+			parking3 = result.Property.Parking[2];
+		}
+		if (result.Property.Parking[3]) {
+			parking3 = parking3 + ', ' + result.Property.Parking[3];
 		}
 	}
 
@@ -94,7 +97,7 @@ const results = uniqueBy(
 		price: result.Property.Price.replace('$', '').replace(',', ''),
 		type: result.Building.Type,
 		ownership: result.Property.OwnershipType,
-		size: result.Building.SizeInterior.replace(' sqft', ''),
+		size: result.Building.SizeInterior ? result.Building.SizeInterior.replace(' sqft', '') : '',
 		stories: result.Building.StoriesTotal,
 		bathrooms: result.Building.BathroomTotal,
 		bedroomsAboveGrade: bedroomsAboveGrade || 0,
