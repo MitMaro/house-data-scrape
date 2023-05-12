@@ -1,0 +1,25 @@
+{
+  "name": "house-data-scrape",
+  "version": "1.0.0",
+  "description": "Scrape house data",
+  "main": "houses-to-csv.js",
+  "dependencies": {
+    "better-sqlite3": "^8.3.0",
+    "csv-parse": "^5.3.10",
+    "csv-stringify": "^6.2.3",
+    "fs-extra": "^8.0.1",
+    "json2csv": "^3.7.3",
+    "lodash.isequal": "^4.5.0",
+    "lodash.startcase": "^4.4.0",
+    "lodash.tolower": "^4.1.2",
+    "lodash.uniqby": "^4.7.0",
+    "moment": "^2.29.4",
+    "node-fetch": "^2.6.1",
+    "to-title-case": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Oram <me@mitmaro.ca>",
+  "license": "ISC"
+}
