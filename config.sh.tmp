@@ -1,6 +1,8 @@
-
 cookies=""
 latitudeMax=47.00000
 longitudeMax=-51.00000
 latitudeMin=48.00000
 longitudeMin=-53.00000
+spreadsheetId='xxxxxxx'
+rawDataSheetId='1234568'
+postalCodeSheetId='1234567'

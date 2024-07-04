@@ -8,6 +8,7 @@
     "csv-parse": "^5.3.10",
     "csv-stringify": "^6.2.3",
     "fs-extra": "^8.0.1",
+    "googleapis": "^140.0.1",
     "json2csv": "^3.7.3",
     "lodash.isequal": "^4.5.0",
     "lodash.startcase": "^4.4.0",

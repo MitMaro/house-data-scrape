@@ -146,6 +146,11 @@ node houses-to-csv.js data/{houses,land}"-${todayDate}-"*.json > "$tsvOutput"
 1>&2 echo "Processing Postal code data"
 node postal-code-lookup.js data/*.json > data/postal-codes.tsv
 
+1>&2 echo "Import listing to database"
 node import-listings.js "$todayDate" "$tsvOutput"
 
+1>&2 echo "Import postal codes to database"
 node import-postalcodes.js data/postal-codes.tsv
+
+1>&2 echo "Update Sheet"
+node update-sheet.js "$spreadsheetId" "$postalCodeSheetId" "data/postal-codes.tsv" "$rawDataSheetId" "$tsvOutput"
