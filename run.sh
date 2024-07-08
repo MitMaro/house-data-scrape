@@ -43,7 +43,7 @@ function download {
 	jsonOutputPath="data/${property_type}-$(date +%Y-%m-%d)-${page}${file_name_price_min_part}${file_name_price_max_part}.json"
 
 	formData="$(cat <<-EOF | tr -d \\n
-		ZoomLevel=11
+		ZoomLevel=$zoomLevel
 		&LatitudeMax=$latitudeMax
 		&LongitudeMax=$longitudeMax
 		&LatitudeMin=$latitudeMin
