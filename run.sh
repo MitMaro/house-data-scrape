@@ -54,7 +54,7 @@ function download {
 		&TransactionTypeId=2
 		&Currency=CAD
 		&IncludeHiddenListings=true
-		&RecordsPerPage=200
+		&RecordsPerPage=50
 		&ApplicationId=1
 		&CultureId=1
 		&Version=7.0
@@ -117,6 +117,7 @@ function download_house_range() {
 	total_pages="$(download "houses" 1 "$start_price" "$end_price")"
 	for page in $(seq 2 "$total_pages"); do
 		download "houses" "$page" "$start_price" "$end_price" > /dev/null
+		sleep 3
 	done
 }
 
@@ -124,6 +125,7 @@ function download_land_range() {
 	total_pages="$(download "land"  1)"
 	for page in $(seq 2 "$total_pages"); do
 		download "land" "$page" > /dev/null
+		sleep 3
 	done
 }
 
